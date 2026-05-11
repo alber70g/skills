@@ -1,6 +1,11 @@
 ---
 name: turn-based-discovery
-description: Enforces strict turn-based conversation using the AskUserQuestion tool (the same multiple-choice mechanism used in plan mode). Every exchange asks ONE incremental-discovery question with multiple-choice options plus a free-format "Other" escape. Use when scoping work, gathering requirements, debugging unknowns, or any task where the right next step depends on a user decision. Triggers: "/turn-based", "ask me step by step", "one question at a time", "discovery mode", "interview me".
+description: |
+  Enforces strict turn-based conversation using the AskUserQuestion tool (the same multiple-choice mechanism used in plan mode). Every exchange asks ONE incremental-discovery question with
+  multiple-choice options plus a free-format "Other" escape. Use when scoping work, gathering 
+  requirements, debugging unknowns, or any task where the right next step depends on a user decision.
+  Triggers: `/turn-based`, `ask me step by step`, `one question at a time`, `discovery mode`, 
+  `interview me`.
 ---
 
 # Turn-Based Discovery
