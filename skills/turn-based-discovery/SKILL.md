@@ -1,117 +1,105 @@
 ---
 name: turn-based-discovery
 description: |
-  Enforces strict turn-based conversation using the AskUserQuestion tool (the same multiple-choice mechanism used in plan mode). Every exchange asks ONE incremental-discovery question with
-  multiple-choice options plus a free-format "Other" escape. Use when scoping work, gathering 
-  requirements, debugging unknowns, or any task where the right next step depends on a user decision.
-  Triggers: `/turn-based`, `ask me step by step`, `one question at a time`, `discovery mode`, 
-  `interview me`.
+  Use the AskUserQuestion tool (the same multiple-choice mechanism plan mode uses) to get clarity from the user.
+  Each question is multiple-choice plus a free-format "Other" escape. Ask in small batches — up to 4 questions
+  per call (the tool's max), more if needed across calls. Use when scoping work, resolving ambiguity,
+  or surfacing answers a research pass already raised. Triggers: `/turn-based`, `ask me`, `clarify`,
+  `discovery mode`, `interview me`.
 ---
 
 # Turn-Based Discovery
 
 ## Purpose
 
-Replace open-ended interrogation and walls-of-questions with a disciplined loop:
-**one question → multiple-choice options → free-format escape → branch on the answer.**
+Get clarity, not depth. Replace prose interrogation with structured multiple-choice questions that have a free-format escape.
 
-The user should never face more than one question at a time, and should always have a way out of the listed options.
+This is **not** a deep-digging interview. It's a clarity tool — useful when:
+- a request is ambiguous and you need a few decisions before acting,
+- a research pass produced open questions that need quick answers,
+- you'd otherwise be guessing on small, load-bearing details.
 
-## The Hard Rules
+## The Rules
 
-1. **One question per turn.** Never bundle. If a topic has two facets, ask the first, branch on the answer, then ask the second.
-2. **Always use the `AskUserQuestion` tool.** Never ask in plain prose when you could ask via the tool. The tool auto-adds the free-format "Other" option — do not list "Other" yourself.
-3. **2–4 options, each a real, distinct hypothesis.** Not "Yes / No / Maybe". Each option should represent a concrete branch you can actually act on.
-4. **Non-leading.** Options must not all point at your preferred answer. If you genuinely have a recommendation, mark it `(Recommended)` and put it first — but the alternatives must be live, not strawmen.
-5. **Exploratory, not confirmatory.** Ask to discover, not to confirm what you already assumed. If you find yourself asking "should I do X?", reframe as "which of these directions fits?".
-6. **Branch visibly.** After each answer, state in one short sentence what branch you're now on, then ask the next question (or act).
+1. **Use the `AskUserQuestion` tool.** Don't ask in prose when you could ask via the tool. The tool auto-adds the free-format "Other" option — never add it yourself.
+2. **Batch up to 4 questions per call** (the tool's hard max). If you genuinely need 5+ unknowns answered, send a second batch after the first returns — don't pad with filler.
+3. **Only ask what's blocking.** If you can read it from the filesystem, infer it, or safely assume it, do that instead.
+4. **Each question has 2–4 real options.** Each option should be a distinct choice the user could plausibly pick — not strawmen pointing at your preferred answer.
+5. **Phrase for clarity, not for funneling.** Aim to surface what the user actually wants, not to confirm what you already assumed. Recommendations are fine — mark them `(Recommended)` and put them first — but the alternatives must be live.
 
 ## Question Shape
 
-Each `AskUserQuestion` question must have:
+Each question passed to `AskUserQuestion`:
 
-- **`question`** — open-ended phrasing, ends with a question mark. Avoid yes/no framing.
-- **`header`** — ≤12 chars, names the decision axis (e.g. "Scope", "Storage", "Trigger").
-- **`options`** — 2–4 mutually exclusive, concrete branches. Each with:
-  - `label` — 1–5 words, the choice itself.
-  - `description` — one line explaining the implication of picking it (what changes downstream).
-- **`multiSelect`** — `false` by default. Only `true` when the axes genuinely combine (e.g. "which platforms").
+- **`question`** — clear, ends with a question mark.
+- **`header`** — ≤12 chars, names the decision axis (e.g. "Scope", "Storage", "Format").
+- **`options`** — 2–4 distinct choices. Each with:
+  - `label` — 1–5 words.
+  - `description` — one line on what picking it implies.
+- **`multiSelect`** — `false` by default; `true` only when options genuinely combine.
 
-The tool always appends an "Other" choice for free-format input. Never add your own.
+The tool always appends "Other" for free-format input. Don't duplicate it.
 
-## Good vs Bad Examples
+## When to Use
 
-### Bad — leading, binary, confirmatory
+- After a research/exploration pass that surfaced open decisions.
+- Before starting work when the request leaves real ambiguity.
+- Mid-task when you hit a fork that's cheap to ask about but expensive to guess wrong.
 
-> Question: "Should I use Postgres for this?"
-> Options: "Yes" / "No"
+## When NOT to Use
 
-Problem: binary, leading, no discovery. The user can't tell you what they actually want.
+- The answer is obvious from context, files, or prior conversation.
+- The question is reversible and low-cost — just pick and proceed.
+- You're already mid-implementation and asking would be performative.
+- The user said "just go" / "you decide".
 
-### Good — exploratory, branching
+## Examples
 
-> Question: "What does the data look like at steady state?"
-> Header: "Data shape"
-> Options:
-> - "Mostly relational, joins matter" — Postgres or similar; schema upfront.
-> - "Document-shaped, schema varies" — document store; flexible writes.
-> - "Append-only event stream" — log-structured; replay-friendly.
-> - "Small + in-process, no server" — SQLite or a flat file.
+### Good — batched clarifying questions
 
-Each option opens a different branch. "Other" lets the user say "it's actually time-series telemetry."
+After researching options, ask 2–4 at once:
 
-### Bad — bundled
+- **Storage**: "Where should results be persisted?" → SQLite / Postgres / JSON file / In-memory only
+- **Trigger**: "How does the job start?" → Manual CLI / Cron / On file change / HTTP endpoint
+- **Output**: "What format do you want back?" → JSON / Markdown / Plain text
 
-> "What language, what framework, and where will it be deployed?"
+The user answers all three, picks "Other" on any that don't fit, and you proceed.
 
-Problem: three questions. Ask language first, branch, then framework given language, branch, then deployment.
+### Good — single clarifier
 
-### Good — single axis
+When only one thing is unclear, ask one. Don't pad to four.
 
-> "Which language are we starting from?"
-> Then branch: if Python, next question is Python-specific (FastAPI / Django / Flask / script). If TypeScript, next question is TS-specific.
+### Bad — fake options
 
-## The Loop
+> "Should I use Postgres?" → Yes / Yes with caching / Maybe / No
 
-```
-1. Identify the next unknown that actually blocks progress.
-2. Frame it as ONE question with 2–4 concrete branches.
-3. Call AskUserQuestion.
-4. On answer:
-   - If user picked an option: state the branch in one sentence, then go to 1.
-   - If user picked "Other" / free-format: incorporate, then go to 1.
-5. Stop when remaining unknowns are low-risk enough to assume — say so and proceed.
-```
+All paths lead to Postgres. Use real alternatives or don't ask.
 
-## When to Stop Asking
+### Bad — trivia
 
-- You can name the next concrete action without guessing on anything load-bearing.
-- Remaining unknowns are reversible and low-cost.
-- The user signals "just go" / "you decide" / "stop asking".
+> "What's the name of the file you mentioned?"
 
-When stopping, state: "I have enough to proceed. I'm assuming X, Y, Z — say stop if any of those are wrong." Then act.
+If it's in the conversation or filesystem, find it. Don't ask.
 
 ## Anti-Patterns
 
-- **Wall of questions** — listing 5 bullets in prose. Use the tool, one at a time.
-- **Fake choices** — options that are all variants of your preferred answer.
-- **Trivia questions** — asking about things you could read from the filesystem or infer.
-- **Yes/no when a spectrum exists** — almost every "should I" can be reframed as "which of these".
-- **Asking after deciding** — if you've already started implementing, don't pretend to ask.
-- **Manually adding "Other"** — the tool does this. Adding it yourself wastes an option slot.
+- **Walls of prose questions** — use the tool, in batches.
+- **Padding to hit a number** — 2 real questions beats 4 with filler.
+- **Manually adding "Other"** — the tool does this; doing it yourself wastes a slot.
+- **Asking after deciding** — if you've started, don't pretend to consult.
+- **Deep funnels** — this skill is for clarity, not interrogation. If you find yourself planning question 5 based on the answer to question 1, you're in the wrong mode — use the `brainstorming` skill instead.
 
 ## Interaction with Other Modes
 
-- **Plan mode**: this skill complements plan mode — use it to *gather* the inputs that feed the plan. Do not call `ExitPlanMode` from inside this skill; surface the plan separately.
-- **Auto mode**: still applies. Auto mode reduces routine confirmations but does not override an explicit user request for turn-based discovery. When this skill is active, ask.
-- **Brainstorming skill**: if `brainstorming` is already running, defer to it; it has its own one-question-at-a-time discipline. Don't double-drive.
+- **Plan mode**: use this to gather inputs that feed the plan. Don't call `ExitPlanMode` from here.
+- **Brainstorming skill**: if deep, one-at-a-time exploration is needed, defer to `brainstorming` — it owns that discipline.
+- **Auto mode**: still applies. When the user explicitly invokes this skill, ask anyway.
 
-## Checklist Before Each Question
+## Checklist Before Calling the Tool
 
-- [ ] Is this the single most blocking unknown right now?
-- [ ] Are the 2–4 options genuinely different branches?
-- [ ] Could a reasonable user pick any of them?
-- [ ] Is the phrasing open, not leading?
-- [ ] Have I left the free-format escape to the tool (not duplicated it)?
+- [ ] Is each question actually blocking progress?
+- [ ] Are the options genuinely distinct?
+- [ ] Did I keep it to ≤4 per call?
+- [ ] Did I leave "Other" to the tool?
 
-If any answer is no, rewrite the question before calling the tool.
+If any answer is no, revise before calling.
