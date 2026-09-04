@@ -1,0 +1,3 @@
+- insert:
+    - id: REPLACE_PLUGIN_ID
+      name: REPLACE_PACKAGE_OR_ABSOLUTE_PATH
