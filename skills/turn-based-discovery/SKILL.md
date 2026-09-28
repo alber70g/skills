@@ -45,6 +45,7 @@ The tool always appends "Other" for free-format input. Don't duplicate it.
 - After a research/exploration pass that surfaced open decisions.
 - Before starting work when the request leaves real ambiguity.
 - Mid-task when you hit a fork that's cheap to ask about but expensive to guess wrong.
+- After you've asked questions, but still unclarities or ambiguousness arise, maybe because the user wants a different direction, or the answers to the question trigger a branch in direction
 
 ## When NOT to Use
 
@@ -88,6 +89,7 @@ If it's in the conversation or filesystem, find it. Don't ask.
 - **Manually adding "Other"** — the tool does this; doing it yourself wastes a slot.
 - **Asking after deciding** — if you've started, don't pretend to consult.
 - **Deep funnels** — this skill is for clarity, not interrogation. If you find yourself planning question 5 based on the answer to question 1, you're in the wrong mode — use the `brainstorming` skill instead.
+- **Stopping early** - when you asked the questions, reflect on them and see if they warrant more questions. Continue if more questions are needed. The user may tell you that they've 
 
 ## Interaction with Other Modes
 
