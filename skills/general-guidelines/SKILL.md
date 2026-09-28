@@ -1,6 +1,6 @@
 ---
 name: general-guidelines
-description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.
+description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, define verifiable success criteria, and keep a WORKLOG.md so work can be continued across sessions.
 license: MIT
 ---
 
@@ -65,3 +65,14 @@ For multi-step tasks, state a brief plan:
 ```
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## 5. Keep a WORKLOG.md
+
+**Leave a trail the next session can pick up.**
+
+Every project keeps a `WORKLOG.md` in the relevant subdirectory (the project root, or the package/app directory in a monorepo), referenced from that directory's `AGENTS.md`. If it's missing, create it and add the reference.
+
+- Read it before starting work.
+- Update it after significant changes: what was done, what's verified, what's left.
+- When the user asks for it mid-task, update it so the work can be continued properly in a fresh session.
+- Transient notes (in-progress state, temporary workarounds, open questions) can be removed once they're no longer relevant.
