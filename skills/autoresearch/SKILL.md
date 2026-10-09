@@ -5,6 +5,23 @@ description: Autonomous experimentation skill — agent interviews the user, set
 
 # Researcher — Autonomous Experimentation Skill
 
+## Table of Contents
+
+- [`.lab/` is Sacred](#lab-is-sacred)
+- [Phase 0: Resume Check](#phase-0-resume-check)
+- [Phase 1: Discovery](#phase-1-discovery)
+- [Phase 2: Lab Setup](#phase-2-lab-setup)
+- [Phase 3: Autonomous Research](#phase-3-autonomous-research)
+  - [Flow: THINK → TEST → REFLECT → repeat](#flow-think--test--reflect--repeat)
+  - [Execution Discipline](#execution-discipline)
+  - [Autonomy](#autonomy)
+  - [Branching](#branching)
+  - [Re-Validation](#re-validation)
+- [Phase 4: Wrap-Up](#phase-4-wrap-up)
+- [Qualitative Rubric](#qualitative-rubric)
+- [Hypothesis Strategies](#hypothesis-strategies)
+- [Convergence Signals](#convergence-signals)
+
 <critical>
 Always follow execution discipline: commit before running, measure after, log every result, revert on discard. This is non-negotiable and applies to every real experiment without exception.
 </critical>

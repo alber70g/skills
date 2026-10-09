@@ -5,6 +5,23 @@ description: 'Format and draft compelling LinkedIn posts using Unicode bold/ital
 
 # LinkedIn Post Formatter
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Unicode Typography Reference](#unicode-typography-reference)
+  - [Bold (Mathematical Sans-Serif Bold)](#bold-mathematical-sans-serif-bold)
+  - [Italic (Mathematical Sans-Serif Italic)](#italic-mathematical-sans-serif-italic)
+  - [Bold-Italic (Mathematical Sans-Serif Bold Italic)](#bold-italic-mathematical-sans-serif-bold-italic)
+- [Visual Separators](#visual-separators)
+- [Post Structure Patterns](#post-structure-patterns)
+  - [Pattern 1: Hook → Content → CTA (General Purpose)](#pattern-1-hook--content--cta-general-purpose)
+  - [Pattern 2: Listicle (Numbered Insights)](#pattern-2-listicle-numbered-insights)
+  - [Pattern 3: Story → Lesson (Thought Leadership)](#pattern-3-story--lesson-thought-leadership)
+  - [Pattern 4: Resource Share (Cheatsheet/Guide/Tool)](#pattern-4-resource-share-cheatsheetguidetool)
+- [Formatting Rules](#formatting-rules)
+- [Engagement Optimization](#engagement-optimization)
+- [Process](#process)
+
 Transform raw content, ideas, or technical material into polished, engagement-optimized LinkedIn posts using Unicode typography and proven structural patterns.
 
 ## Overview
