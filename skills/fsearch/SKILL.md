@@ -7,6 +7,8 @@ description: Search local macOS files with the installed FSearch CLI by fuzzy na
 
 Use the installed `fsearch` CLI to locate files and folders on macOS. Searches start the daemon automatically and share its index. Ordinary searches need no build, installation, or login-item setup.
 
+If `fsearch` isn't installed, read [the repositories' README.md](https://raw.githubusercontent.com/noahdunnagan/fsearch/refs/heads/main/README.md) for installation instructions.  
+
 ## Choose the query type
 
 Plain words search **names**, not contents. Choose the keyword by what the user wants to match:

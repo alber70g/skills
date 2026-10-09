@@ -5,6 +5,7 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 - [Skills](#skills)
 	- [autoresearch](#autoresearch)
 	- [continue-autonomously](#continue-autonomously)
+	- [fsearch](#fsearch)
 	- [general-guidelines](#general-guidelines)
 	- [linkedin-post-formatter](#linkedin-post-formatter)
 	- [turn-based-discovery](#turn-based-discovery)
@@ -14,6 +15,7 @@ Install skills interactively:
 ```bash
 npx skills@latest add alber70g/skills
 # you'll be interactively guided to choose skills to install global or locally
+bun x skills add alber70g/skills
 ```
 
 ## autoresearch
@@ -30,6 +32,14 @@ Keeps the agent moving without stopping to ask. Sorts decisions into three tiers
 
 ```bash
 npx skills@latest add alber70g/skills --skill continue-autonomously
+```
+
+## fsearch
+
+Searches local macOS files with the installed FSearch CLI by fuzzy name, path, indexed contents, symbol definition, size, type, or modification age.
+
+```bash
+npx skills@latest add alber70g/skills --skill fsearch
 ```
 
 ## general-guidelines
