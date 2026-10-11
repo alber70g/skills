@@ -1,6 +1,6 @@
 ---
 name: general-guidelines
-description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, define verifiable success criteria, and keep a WORKLOG.md so work can be continued across sessions.
+description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, define verifiable success criteria, keep a WORKLOG.md so work can be continued across sessions, and write research to research/ and plans for review to docs/.
 license: MIT
 ---
 
@@ -76,3 +76,14 @@ Every project keeps a `WORKLOG.md` in the relevant subdirectory (the project roo
 - Update it after significant changes: what was done, what's verified, what's left.
 - When the user asks for it mid-task, update it so the work can be continued properly in a fresh session.
 - Transient notes (in-progress state, temporary workarounds, open questions) can be removed once they're no longer relevant.
+
+## 6. Write Research to `research/` and Plans to `docs/`
+
+**Findings and plans live in files, not only in the chat.**
+
+Store them next to `WORKLOG.md` (the project root, or the package/app directory in a monorepo). Use descriptive filenames that name the topic, such as `research/sqlite-vs-postgres-for-local-first-sync.md`.
+
+- `research/`: excerpts of the research you did, whether on your own (reading code, docs, running experiments) or with Tavily and/or Exa. Keep the relevant quotes and findings, with their sources, plus your conclusions.
+- `docs/`: the plans you make, written so the user can review them before implementation starts.
+- Before starting research, check `research/` for an existing document on the topic, and ask the user whether to build on it.
+- Reference the new or updated documents in `WORKLOG.md`.
