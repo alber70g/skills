@@ -5,6 +5,7 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 - [Skills](#skills)
 	- [autoresearch](#autoresearch)
 	- [continue-autonomously](#continue-autonomously)
+	- [copy-writing-preferences](#copy-writing-preferences)
 	- [fsearch](#fsearch)
 	- [general-guidelines](#general-guidelines)
 	- [linkedin-post-formatter](#linkedin-post-formatter)
@@ -34,6 +35,14 @@ Keeps the agent moving without stopping to ask. Sorts decisions into three tiers
 
 ```bash
 npx skills@latest add alber70g/skills --skill continue-autonomously
+```
+
+## copy-writing-preferences
+
+Copy-writing preferences as fourteen rules (descriptive titles, no selling or nagging, concrete instead of figurative, only checked facts), plus instructions to make a message sendable, distill a text and match earlier emails to a group. Includes before/after examples for each rule.
+
+```bash
+npx skills@latest add alber70g/skills --skill copy-writing-preferences
 ```
 
 ## fsearch
