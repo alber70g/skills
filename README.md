@@ -8,6 +8,7 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 	- [fsearch](#fsearch)
 	- [general-guidelines](#general-guidelines)
 	- [linkedin-post-formatter](#linkedin-post-formatter)
+	- [notify-user](#notify-user)
 	- [turn-based-discovery](#turn-based-discovery)
 
 Install skills interactively:
@@ -56,6 +57,14 @@ Formats and drafts LinkedIn posts using Unicode bold/italic typography (LinkedIn
 
 ```bash
 npx skills@latest add alber70g/skills --skill linkedin-post-formatter
+```
+
+## notify-user
+
+Speaks local notifications when a task finishes, work is blocked, or your attention is needed. Includes the macOS notifier and Soprano setup under `references/`.
+
+```bash
+npx skills@latest add alber70g/skills --skill notify-user
 ```
 
 ## turn-based-discovery
