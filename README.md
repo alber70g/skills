@@ -10,6 +10,7 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 	- [general-guidelines](#general-guidelines)
 	- [linkedin-post-formatter](#linkedin-post-formatter)
 	- [notify-user](#notify-user)
+	- [orchestrator](#orchestrator)
 	- [turn-based-discovery](#turn-based-discovery)
 	- [writing-clearly](#writing-clearly)
 
@@ -75,6 +76,14 @@ Speaks local notifications when a task finishes, work is blocked, or your attent
 
 ```bash
 npx skills@latest add alber70g/skills --skill notify-user
+```
+
+## orchestrator
+
+Session mode, started with `/orchestrator`, where the main thread plans and validates while subagents on a cheaper model do research and execution. Follows a research, plan, act, validate loop, and tells you the plan and any changes to it.
+
+```bash
+npx skills@latest add alber70g/skills --skill orchestrator
 ```
 
 ## turn-based-discovery
