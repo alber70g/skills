@@ -5,7 +5,6 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 - [Skills](#skills)
 	- [autoresearch](#autoresearch)
 	- [continue-autonomously](#continue-autonomously)
-	- [copy-writing-preferences](#copy-writing-preferences)
 	- [fsearch](#fsearch)
 	- [general-guidelines](#general-guidelines)
 	- [linkedin-post-formatter](#linkedin-post-formatter)
@@ -36,14 +35,6 @@ Keeps the agent moving without stopping to ask. Sorts decisions into three tiers
 
 ```bash
 npx skills@latest add alber70g/skills --skill continue-autonomously
-```
-
-## copy-writing-preferences
-
-Copy-writing preferences as fourteen rules (descriptive titles, no selling or nagging, concrete instead of figurative, only checked facts), plus instructions to make a message sendable, distill a text and match earlier emails to a group. Includes before/after examples for each rule.
-
-```bash
-npx skills@latest add alber70g/skills --skill copy-writing-preferences
 ```
 
 ## fsearch
@@ -96,7 +87,7 @@ npx skills@latest add alber70g/skills --skill turn-based-discovery
 
 ## writing-clearly
 
-Keeps text written for others plain, concrete and verified: descriptive titles, the reason first, exact commands and numbers instead of figures of speech, and nothing stated that wasn't checked. Comes with a before/after table and a feedback loop that adds each caught slip back into the rules. For rules that apply to every reply, copy them into `CLAUDE.md` or `AGENTS.md`, as the skill explains.
+Keeps text written for others plain, concrete and verified: descriptive titles, the reason first, exact commands and numbers instead of figures of speech, and nothing stated that wasn't checked. Comes with before/after examples grouped by rule, a feedback loop that adds each caught slip back into the rules, and instructions for making a message sendable, distilling a text and matching earlier emails to a group.
 
 ```bash
 npx skills@latest add alber70g/skills --skill writing-clearly
