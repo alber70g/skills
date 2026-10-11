@@ -10,6 +10,7 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 	- [linkedin-post-formatter](#linkedin-post-formatter)
 	- [notify-user](#notify-user)
 	- [turn-based-discovery](#turn-based-discovery)
+	- [writing-clearly](#writing-clearly)
 
 Install skills interactively:
 
@@ -73,4 +74,12 @@ Replaces prose interrogation with structured multiple-choice questions (via the 
 
 ```bash
 npx skills@latest add alber70g/skills --skill turn-based-discovery
+```
+
+## writing-clearly
+
+Keeps text written for others plain, concrete and verified: descriptive titles, the reason first, exact commands and numbers instead of figures of speech, and nothing stated that wasn't checked. Comes with a before/after table and a feedback loop that adds each caught slip back into the rules. For rules that apply to every reply, copy them into `CLAUDE.md` or `AGENTS.md`, as the skill explains.
+
+```bash
+npx skills@latest add alber70g/skills --skill writing-clearly
 ```
