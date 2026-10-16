@@ -24,8 +24,9 @@ This is **not** a deep-digging interview. It's a clarity tool — useful when:
 1. **Use the `AskUserQuestion` tool.** Don't ask in prose when you could ask via the tool. The tool auto-adds the free-format "Other" option — never add it yourself.
 2. **Batch up to 4 questions per call** (the tool's hard max). If you genuinely need 5+ unknowns answered, send a second batch after the first returns — don't pad with filler.
 3. **Only ask what's blocking.** If you can read it from the filesystem, infer it, or safely assume it, do that instead.
-4. **Each question has 2–4 real options.** Each option should be a distinct choice the user could plausibly pick — not strawmen pointing at your preferred answer.
-5. **Phrase for clarity, not for funneling.** Aim to surface what the user actually wants, not to confirm what you already assumed. Recommendations are fine — mark them `(Recommended)` and put them first — but the alternatives must be live.
+4. **Give enough context in each question.** The user should not need to infer what you mean. Briefly mention relevant files, directories, recent findings, constraints, or repo state when they affect the decision; if a file is the subject, name it explicitly.
+5. **Each question has 2–4 real options.** Each option should be a distinct choice the user could plausibly pick — not strawmen pointing at your preferred answer.
+6. **Phrase for clarity, not for funneling.** Aim to surface what the user actually wants, not to confirm what you already assumed. Recommendations are fine — mark them `(Recommended)` and put them [...] 
 
 ## Question Shape
 
@@ -89,7 +90,7 @@ If it's in the conversation or filesystem, find it. Don't ask.
 - **Manually adding "Other"** — the tool does this; doing it yourself wastes a slot.
 - **Asking after deciding** — if you've started, don't pretend to consult.
 - **Deep funnels** — this skill is for clarity, not interrogation. If you find yourself planning question 5 based on the answer to question 1, you're in the wrong mode — use the `brainstorming` skill instead.
-- **Stopping early** - when you asked the questions, reflect on them and see if they warrant more questions. Continue if more questions are needed. The user may tell you that they've 
+- **Stopping early** — when you asked the questions, reflect on them and see if they warrant more questions. Continue if more questions are needed. The user may tell you that they've already answered a question in a previous turn or that your prior assumptions were wrong; revise the questions instead of forcing an answer.
 
 ## Interaction with Other Modes
 
@@ -101,6 +102,8 @@ If it's in the conversation or filesystem, find it. Don't ask.
 
 - [ ] Is each question actually blocking progress?
 - [ ] Are the options genuinely distinct?
+- [ ] Did I include enough context for the user to answer without guessing?
+- [ ] Did I reference relevant files, paths, or repo state when they matter?
 - [ ] Did I keep it to ≤4 per call?
 - [ ] Did I leave "Other" to the tool?
 
