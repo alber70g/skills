@@ -5,6 +5,7 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 - [Skills](#skills)
 	- [autoresearch](#autoresearch)
 	- [continue-autonomously](#continue-autonomously)
+	- [expert-opinion](#expert-opinion)
 	- [fsearch](#fsearch)
 	- [general-guidelines](#general-guidelines)
 	- [linkedin-post-formatter](#linkedin-post-formatter)
@@ -35,6 +36,14 @@ Keeps the agent moving without stopping to ask. Sorts decisions into three tiers
 
 ```bash
 npx skills@latest add alber70g/skills --skill continue-autonomously
+```
+
+## expert-opinion
+
+Analyzes a strategy meeting transcript or notes as a senior expert consultant. Names the two visions debated, ranks 3–5 decision criteria, evaluates both against them and gives one recommendation with a confidence level, its biggest risk and the conditions that would flip it.
+
+```bash
+npx skills@latest add alber70g/skills --skill expert-opinion
 ```
 
 ## fsearch

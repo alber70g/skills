@@ -13,3 +13,7 @@
 
 - Added section 6 to `skills/general-guidelines/SKILL.md`: research excerpts (own work or Tavily/Exa, with sources) go in `research/`, plans for user review go in `docs/`; check `research/` before new research and reference new documents from WORKLOG.md. Extended the frontmatter description to mention both folders.
 - Verified `git diff --check`; skill stays under 100 lines, so no table of contents needed. README unchanged. Committed and pushed to master.
+
+## expert-opinion skill
+
+- Added `skills/expert-opinion/SKILL.md` from user-supplied prompt text: meeting content via `$ARGUMENTS`, asks for it when missing. Fixed output headings: one H1 and seven sections. Added README contents link and section.
