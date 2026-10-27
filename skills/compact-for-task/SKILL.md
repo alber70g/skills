@@ -18,3 +18,6 @@ in a single code block, in this form:
 - End the instructions with: "Next task after compaction: $ARGUMENTS"
 
 Do not start the next task. Do not change files.
+
+Next to the compact command, you write the next prompt that the user can execute based on the next task.
+
