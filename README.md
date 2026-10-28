@@ -8,6 +8,7 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 	- [expert-opinion](#expert-opinion)
 	- [fsearch](#fsearch)
 	- [general-guidelines](#general-guidelines)
+	- [harness-2](#harness-2)
 	- [linkedin-post-formatter](#linkedin-post-formatter)
 	- [notify-user](#notify-user)
 	- [orchestrator](#orchestrator)
@@ -60,6 +61,14 @@ Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej 
 
 ```bash
 npx skills@latest add alber70g/skills --skill general-guidelines
+```
+
+## harness-2
+
+Recursive agent harnessing, after Google Research's Harness² (arXiv 2610.14224): interviews you, sets up a `.harness2/` lab, then refines the execution harness for a task through contrastive Propose → Probe → Compose steps with no rubric or score inside the loop, and grows an improvement library of adopted harnesses with evidence-backed lessons that later tasks reuse selectively. `/harness-2 optimize-task <task>`, `status`, `library`, `resume`, `reset`. Ships `scripts/h2.py` for lab files, harness validation, rendering into Claude Code, Codex or OpenCode layouts, leak-checked evidence directories and the library.
+
+```bash
+npx skills@latest add alber70g/skills --skill harness-2
 ```
 
 ## linkedin-post-formatter

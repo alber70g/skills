@@ -17,3 +17,10 @@
 ## expert-opinion skill
 
 - Added `skills/expert-opinion/SKILL.md` from user-supplied prompt text: meeting content via `$ARGUMENTS`, asks for it when missing. Fixed output headings: one H1 and seven sections. Added README contents link and section.
+
+## harness-2 skill
+
+- Added `skills/harness-2/`: `SKILL.md` router (`optimize-task`, `status`, `library`, `resume`, `reset`), seven `references/` files (harness layout and host mapping, lab files, session mechanics, propose, compose, select, reflect) and `scripts/h2.py` (stdlib Python: lab init and logging, harness validation, render/import for claude/codex/opencode/generic, leak-checked evidence directories, anonymised selection pools, library add/list/show/export/prune/index).
+- Prompts follow the reference implementation at github.com/google-research/harness2 (`harness2/core/prompts.py`): INV/DOM editors, composer, blind selector, reflector with `helped|hurt|no observed effect|confounded` verdicts and `NO_ENTRY`. Library layout `entry-NNN/{harness/,EXPERIENCE.md}` plus generated `INDEX.md`.
+- Validated: `py_compile` on the script; a scratch project exercised every subcommand, including the three refusals (grading terms in an evidence directory, an id map inside the selector's context, grading language in an experience file). No model-backed probe was run.
+- Added README contents link and section.
