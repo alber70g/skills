@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harness-2"
+  short_description: "Improve harnesses with contrastive experiments"
+  default_prompt: "Use $harness-2 optimize-task to improve the execution harness for my task."

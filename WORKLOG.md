@@ -26,3 +26,7 @@
 - `CHANGELOG.md` left out, matching the other skills; `validate-skill.py` no longer requires it. Validator passes.
 - Checklist: Step 4 now includes the re-read and eval check; Step 4b is the usage log entry, matching the Step 4b section.
 - Statistics: added `scripts/stats.py` (standard library) with `session`, `finding`, `usage` and `status`. All records, including skill findings and usage, go to `<project>/.review-session/` (self-ignoring); `<project>` defaults to the Git root of the current directory. Nothing is written into skill folders. `status` reports instruction findings and one summary per skill, and flags files tuned in 2+ reviews and TUNEs without eval. Replaces the Grok `usage.log` in Step 4b. Rules in `references/tracking.md`. 5 tests in `tests/test_stats.py` pass; 2 of them fail against a copy with the project-root default and repeat threshold broken.
+
+## harness-2 skill: README entry
+
+- Added the untracked `skills/harness-2/` skill to the repo and a README contents link and section: Propose → Probe → Compose loop, improvement library, commands, `.harness2/` evidence folder and `scripts/lab.py`. Read all skill files; no absolute paths or credentials. Its 4 tests in `tests/test_lab.py` pass.
