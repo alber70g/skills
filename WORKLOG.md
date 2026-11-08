@@ -17,3 +17,12 @@
 ## expert-opinion skill
 
 - Added `skills/expert-opinion/SKILL.md` from user-supplied prompt text: meeting content via `$ARGUMENTS`, asks for it when missing. Fixed output headings: one H1 and seven sections. Added README contents link and section.
+
+## review-session skill
+
+- Copied the Grok bundled postmortem skill from `~/Downloads/bundled__postmortem` to `skills/review-session/` and renamed it to `review-session` (frontmatter, title, evals, triggers, references). The source no longer had `CHANGELOG.md` or `BUILD.bazel` when it was copied.
+- Removed `user-invocable: false` so `/review-session` shows in the Claude Code `/` menu. Fixed the evals to match the skill's 7 questions. Removed the changelog step (old Step 4) and renumbered: Step 4 validate, 4b usage log, 5 verify saved.
+- Added "Which agent ran the session (ask first)" to `SKILL.md`, plus `references/claude-code-sessions.md`, which is read only for Claude Code sessions. Added two evals for it. Added a README section.
+- `CHANGELOG.md` left out, matching the other skills; `validate-skill.py` no longer requires it. Validator passes.
+- Checklist: Step 4 now includes the re-read and eval check; Step 4b is the usage log entry, matching the Step 4b section.
+- Statistics: added `scripts/stats.py` (standard library) with `session`, `finding`, `usage` and `status`. All records, including skill findings and usage, go to `<project>/.review-session/` (self-ignoring); `<project>` defaults to the Git root of the current directory. Nothing is written into skill folders. `status` reports instruction findings and one summary per skill, and flags files tuned in 2+ reviews and TUNEs without eval. Replaces the Grok `usage.log` in Step 4b. Rules in `references/tracking.md`. 5 tests in `tests/test_stats.py` pass; 2 of them fail against a copy with the project-root default and repeat threshold broken.

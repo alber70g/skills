@@ -11,6 +11,7 @@ A collection of agent skills for Claude Code and other agents, following the [Ag
 	- [linkedin-post-formatter](#linkedin-post-formatter)
 	- [notify-user](#notify-user)
 	- [orchestrator](#orchestrator)
+	- [review-session](#review-session)
 	- [turn-based-discovery](#turn-based-discovery)
 	- [writing-clearly](#writing-clearly)
 
@@ -84,6 +85,14 @@ Session mode, started with `/orchestrator`, where the main thread plans and vali
 
 ```bash
 npx skills@latest add alber70g/skills --skill orchestrator
+```
+
+## review-session
+
+Reviews a session, started with `/review-session`: traces each user correction, then tunes the skills involved and adds references, examples and evals so the same mistake doesn't repeat. Asks first whether the session ran in Claude Code or Grok; for Claude Code it reads `references/claude-code-sessions.md` for transcript locations and where each fix belongs. `scripts/stats.py` records each review in the project the session worked on (`.review-session/`, git-ignored): skill findings, skill usage and CLAUDE.md or other instruction findings. Before each change plan it reports files tuned in two or more reviews, so a fix that didn't stick gets rewritten instead of patched again.
+
+```bash
+npx skills@latest add alber70g/skills --skill review-session
 ```
 
 ## turn-based-discovery

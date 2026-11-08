@@ -1,0 +1,18 @@
+{
+  "skill": "review-session",
+  "test_cases": [
+    {"input": "/review-session", "should_trigger": true},
+    {"input": "review this session", "should_trigger": true},
+    {"input": "run the postmortem for this session", "should_trigger": true},
+    {"input": "postmortem — what did we learn?", "should_trigger": true},
+    {"input": "what did we learn this session?", "should_trigger": true},
+    {"input": "let's review what went wrong and update skills", "should_trigger": true},
+    {"input": "before we run out of context, capture learnings", "should_trigger": true},
+    {"input": "context is getting long, do a postmortem", "should_trigger": true},
+    {"input": "we just merged the PR, update skills with what we learned", "should_trigger": true},
+    {"input": "session retrospective", "should_trigger": true},
+    {"input": "commit these code changes", "should_trigger": false},
+    {"input": "debug the voice latency issue", "should_trigger": false},
+    {"input": "create a new skill for managing devboxes", "should_trigger": false}
+  ]
+}

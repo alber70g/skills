@@ -1,0 +1,80 @@
+{
+  "skill": "review-session",
+  "test_cases": [
+    {
+      "name": "full_5_step_flow",
+      "input": "/review-session (session used dataflywheel, user corrected a missing partition filter)",
+      "assertions": [
+        "Step 1: produces correction trace table with mistake score",
+        "Step 2: audits dataflywheel with 7 questions, produces change plan table",
+        "Step 3: tunes SKILL.md AND adds eval to evals.json",
+        "Step 4: runs validate-skill.py on touched skills and fixes failures",
+        "Step 5: verifies changes look correct — does NOT skip this step",
+        "Does NOT create or edit any CHANGELOG.md"
+      ]
+    },
+    {
+      "name": "creates_new_skill_on_3x_pattern",
+      "input": "review-session: I kept writing the same Axiom query pattern 3 sessions in a row",
+      "assertions": [
+        "Identifies the 3x repetition pattern",
+        "Creates new skill directory with SKILL.md and evals/",
+        "Writes real evals.json and triggers.json (3+ test cases, not stubs)",
+        "Creates skill directory in .grok/skills/"
+      ]
+    },
+    {
+      "name": "traces_repeated_corrections",
+      "input": "review-session: user told me twice to check the branch before committing",
+      "assertions": [
+        "Records 2 rows in correction trace (once per repetition)",
+        "Identifies root cause",
+        "TUNEs the commit skill to add branch check"
+      ]
+    },
+    {
+      "name": "grows_triggers_and_evals",
+      "input": "review-session: user triggered the skill by saying 'what did we learn' but that wasn't in triggers",
+      "assertions": [
+        "Adds 'what did we learn' to triggers.json with should_trigger: true"
+      ]
+    },
+    {
+      "name": "asks_which_agent_ran_session",
+      "input": "/review-session",
+      "assertions": [
+        "Asks whether the session ran in Claude Code or Grok before Step 1",
+        "Does NOT start tracing or read any transcript before the user answers"
+      ]
+    },
+    {
+      "name": "claude_code_session_loads_reference",
+      "input": "/review-session for my last Claude Code session",
+      "assertions": [
+        "Reads references/claude-code-sessions.md before Step 1",
+        "Finds the transcript under ~/.claude/projects/, not .grok/",
+        "Does NOT write to .grok/skills/"
+      ]
+    },
+    {
+      "name": "records_everything_in_the_project",
+      "input": "/review-session for this Claude Code session (user corrected the commit skill once and a CLAUDE.md rule once)",
+      "assertions": [
+        "Records the review, the commit-skill finding and the CLAUDE.md finding in <project>/.review-session/",
+        "Records the commit-skill finding with --target skill --skill commit",
+        "Does NOT write any record into the commit skill's folder",
+        "Still applies the TUNE itself to the commit skill's source SKILL.md",
+        "Adds one dated line to the project's existing WORKLOG.md or CHANGELOG.md, and does NOT create a new one"
+      ]
+    },
+    {
+      "name": "repeat_tune_escalates_instead_of_patching",
+      "input": "/review-session (stats.py status shows SKILL.md of the commit skill in repeat_tunes)",
+      "assertions": [
+        "Runs stats.py status before writing the change plan",
+        "Rewrites the whole section or adds an eval, script or hook",
+        "Does NOT append another one-line rule to the same section"
+      ]
+    }
+  ]
+}
